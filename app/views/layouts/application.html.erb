@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emap</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'fastclick', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'nprogress' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'Chart.min' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'gauge.min' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap-progressbar.min' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'icheck.min' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'skycons' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'date' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'moment.min' , 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'daterangepicker' , 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom.min' , 'data-turbolinks-track': 'reload' %>
+
+
+
+
+    <%= stylesheet_link_tag "bootstrap" %>
+    <%= stylesheet_link_tag "font-awesome.min" %>
+    <%= stylesheet_link_tag "nprogress" %>
+    <%= stylesheet_link_tag "animate.min" %>
+    <%= stylesheet_link_tag "custom.min" %>
+    <%= stylesheet_link_tag "prettify.min" %>
+    <%= stylesheet_link_tag "jqvmap" %>
+    <%= stylesheet_link_tag "daterangepicker.min" %>
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

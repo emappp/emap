@@ -1,0 +1,50 @@
+<body class="login">
+<div>
+  <div class="login_wrapper">
+    <div class="animate form register_form">
+      <section class="login_content">
+        <%= form_for(user) do |f| %>
+
+          <h1>Create Account</h1>
+            <% if user.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                  <ul>
+                    <% user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+          <div>
+            <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+          </div>
+          <div>
+            <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+          </div>
+          <div>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+          </div>
+          <div>
+            <%= submit_tag "Register",  class: "btn btn-default submit" %>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="separator">
+            <p class="change_link">Already a member ?
+              <a href="#signin" class="to_register"> <%= link_to 'Login', login_url %> </a>
+            </p>
+
+            <div class="clearfix"></div>
+            <br />
+
+
+          </div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
