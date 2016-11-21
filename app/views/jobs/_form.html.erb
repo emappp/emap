@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
@@ -9,6 +15,7 @@
 
         <div class="clearfix"></div>
 
+        <!-- menu profile quick info -->
         <!-- menu profile quick info -->
 
 
@@ -58,7 +65,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Hello! <%= @user.username %>
+                Hello! <%= User.find_by(id: session[:user_id]).username %>
                 <span class=" fa fa-angle-down"></span>
               </a>
               <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -138,10 +145,60 @@
 
     <!-- page content -->
     <div class="right_col" style="height: 600px" role="main">
+      <body class="login">
+      <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
 
+        <div class="login_wrapper">
+          <div class="animate form login_form">
+            <% flash.each do |type, message| %>
+                <div class="message notice">
+                  <p>
+                    <%= message %>
+                  </p>
+                </div>
+            <% end %>
+            <section class="login_content">
+              <%= form_for(job) do |f| %>
+                                    <h1>Job Request</h1>
+                  <div >
+                    <%= f.select :priority, ['Very Urgent','Urgent', 'Important','Normal','Less Normal'] , class: "form-control"%>
+                  </div>
+                  <br/>
+                  <div>
+                    <%= f.text_field :username,  class: "form-control", placeholder: "Guard/Supervisor Username" %>
+                  </div>
+                  <div >
+                    <%= f.text_field :place,  class: "form-control", placeholder: "Place"  %>
+                  </div>
+                  <div >
+                    <%= f.text_field :message, class: "form-control", placeholder: "Message"  %>
+                  </div>
+
+                  <div >
+                    <%= f.text_field :assign_by, class: "form-control", placeholder: "Assign By"  %>
+                  </div>
+                  <div>
+                    <%= f.submit "Submit", class: "btn btn-default submit" %>
+                  </div>
+
+                  <div class="clearfix"></div>
+
+
+                    <div class="clearfix"></div>
+                    <br />
+
+                  </div>
+              <% end %>
+            </section>
+          </div>
+
+        </div>
+      </div>
+      </body>
 
     </div>
-    <!-- /page content -->
 
     <!-- footer content -->
     <footer>

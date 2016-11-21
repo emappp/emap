@@ -17,9 +17,17 @@
                   </ul>
                 </div>
             <% end %>
+            <div>
+              <%= f.select :user_role, ['Supervisor', 'Guard'] , class: "form-control"%>
+            </div>
+            <br/>
           <div>
             <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
           </div>
+            <div>
+              <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+            </div>
+
           <div>
             <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
           </div>

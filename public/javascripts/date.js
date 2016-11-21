@@ -3233,7 +3233,7 @@
 	var $D = Date;
 	$D.Grammar = {};
 	var _ = $D.Parsing.Operators, g = $D.Grammar, t = $D.Translator, _fn;
-	// Allow rolling up into general purpose rules
+	// Allow rolling up into Admin User purpose rules
 	_fn = function () {
 		return _.each(_.any.apply(null, arguments), _.not(g.ctoken2("timeContext")));
 	};
@@ -3494,7 +3494,7 @@
 			}
 		);
 
-		// starting rule for general purpose grammar
+		// starting rule for Admin User purpose grammar
 		g._start = _.process(_.set([ g.date, g.time, g.expression ],
 		g.generalDelimiter, g.whiteSpace), t.finish);
 	};
@@ -3528,7 +3528,7 @@
 	]);
 	
 	// real starting rule: tries selected formats first, 
-	// then general purpose rule
+	// then Admin User purpose rule
 	g.start = function (s) {
 		try {
 			var r = g._formats.call({}, s);

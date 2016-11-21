@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:new, :create, :index]
+  skip_before_action :authorize, only: [:new, :create, :index, :activate]
   # GET /users
   # GET /users.json
   def index
     @users = User.all
   end
+
+
 
   # GET /users/1
   # GET /users/1.json
@@ -21,6 +23,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # GET /users/1/edit
+    def activate
+    end
+
   # POST /users
   # POST /users.json
   def create
@@ -35,6 +41,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
@@ -68,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username,:email,:user_role, :password, :password_confirmation)
     end
 end

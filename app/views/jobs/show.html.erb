@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
@@ -9,6 +19,7 @@
 
         <div class="clearfix"></div>
 
+        <!-- menu profile quick info -->
         <!-- menu profile quick info -->
 
 
@@ -58,7 +69,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Hello! <%= @user.username %>
+                Hello! <%= User.find_by(id: session[:user_id]).username %>
                 <span class=" fa fa-angle-down"></span>
               </a>
               <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -138,10 +149,41 @@
 
     <!-- page content -->
     <div class="right_col" style="height: 600px" role="main">
+      <p id="notice"><%= notice %></p>
 
+
+      <table class="table table-hover">
+        <tbody>
+        <tr>
+          <th>Username</th>
+          <td><%= @job.username %></td>
+        </tr>
+        <tr>
+          <th>Place</th>
+          <td><%= @job.place %></td>
+        </tr>
+        <tr>
+          <th>Message</th>
+          <td><%= @job.message %></td>
+        </tr>
+        <tr>
+          <th>Priority</th>
+          <td><%= @job.priority %></td>
+        </tr>
+        <tr>
+          <th>Assign By</th>
+          <td><%= @job.assign_by %></td>
+        </tr>
+
+        </tbody>
+      </table>
+
+
+
+      <button class="btn btn-warning "><%= link_to 'Edit', edit_job_path(@job) %></button> &nbsp;
+      <button class="btn btn-success"> <%= link_to 'Back', jobs_path %></button>
 
     </div>
-    <!-- /page content -->
 
     <!-- footer content -->
     <footer>
@@ -155,3 +197,5 @@
 </div>
 
 </body>
+
+

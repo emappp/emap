@@ -139,9 +139,30 @@
     <!-- page content -->
     <div class="right_col" style="height: 600px" role="main">
 
+      <%= link_to 'Assign A Job', new_job_path, class: 'btn btn-primary'%>
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>User Role</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <td><%= user.username %></td>
+              <td><%= user.email %></td>
+              <td><%= user.user_role %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
 
     </div>
-    <!-- /page content -->
 
     <!-- footer content -->
     <footer>

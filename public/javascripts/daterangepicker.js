@@ -1536,7 +1536,7 @@
 
             // Set the state such that if the user goes back to using a mouse, 
             // the calendars are aware we're selecting the end of the range, not
-            // the start. This allows someone to edit the end of a date range without
+            // the start. This allows someone to approve the end of a date range without
             // re-selecting the beginning, by clicking on the end date input then
             // using the calendar.
             var isRight = $(e.target).closest('.calendar').hasClass('right');
