@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   resources :jobs
   get 'admin/index'
   get 'sessions/create'
   get 'sessions/destroy'
 
   get 'admin/activation'
-  get 'admin/approve'
   resources :users
 
   get 'admin' => 'admin#index'
@@ -16,6 +17,6 @@ Rails.application.routes.draw do
     get '/logout',  to: 'sessions#destroy'
   end
 
-  root 'admin#index'
+  root 'home#index'
 
 end

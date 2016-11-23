@@ -1,4 +1,12 @@
 class AdminController < ApplicationController
+  before_action :access
+
+  def access
+    if session[:user_role] != "admin"
+      redirect_to admin_login_url, notice: "You did not have admin access"
+end
+  end
+
   def index
     @id = session[:user_id]
     @user = User.find_by(id: @id)
@@ -14,15 +22,14 @@ class AdminController < ApplicationController
 
   end
 
+
   def activation
     @id = session[:user_id]
     @user = User.find_by(id: @id)
     @users = User.all
   end
 
-  def approve
 
-  end
 
 
 end
