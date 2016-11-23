@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'supervisor/index'
   get 'sessions/create'
   get 'sessions/destroy'
+  get 'admin/timelog'
+
+  get 'guard/checkin', to: 'guard#checkin'
+  get 'supervisor/checkin', to: 'supervisor#checkin'
 
   get 'admin/activation'
   resources :users

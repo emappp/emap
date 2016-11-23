@@ -10,7 +10,6 @@
         <div class="clearfix"></div>
 
         <!-- menu profile quick info -->
-        <!-- menu profile quick info -->
 
 
         <br />
@@ -25,7 +24,8 @@
               <li> <%= link_to 'Users', admin_activation_path %>
               </li>
               <li> <%= link_to 'Jobs', jobs_path %>
-              </li>
+              </li><li> <%= link_to 'Check In - Out', admin_timelog_path %>
+            </li>
             </ul>
           </div>
         </div>
@@ -59,7 +59,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Hello! <%= User.find_by(id: session[:user_id]).username %>
+                Hello! <%= User.find(session[:user_id]).username %>
                 <span class=" fa fa-angle-down"></span>
               </a>
               <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -138,62 +138,32 @@
     <!-- /top navigation -->
 
     <!-- page content -->
-    <div class="right_col" style="height: 600px" role="main">
-      <body class="login">
-      <div>
-        <a class="hiddenanchor" id="signup"></a>
-        <a class="hiddenanchor" id="signin"></a>
+    <div class="right_col" style="min-height: 600px" role="main">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Role</th>
+          <th>Time</th>
+          <th>Status</th>
 
-        <div class="login_wrapper">
-          <div class="animate form login_form">
-            <% flash.each do |type, message| %>
-                <div class="message notice">
-                  <p>
-                    <%= message %>
-                  </p>
-                </div>
-            <% end %>
-            <section class="login_content">
-              <%= form_for(job) do |f| %>
-                                    <h1>Job Request</h1>
-                  <div >
-                    <%= f.select :priority, ['Very Urgent','Urgent', 'Important','Normal','Less Normal'] , class: "form-control"%>
-                  </div>
-                  <br/>
-                  <div>
-                    <%= f.text_field :username,  class: "form-control", placeholder: "Guard/Supervisor Username" %>
-                  </div>
-                  <div >
-                    <%= f.text_field :place,  class: "form-control", placeholder: "Place"  %>
-                  </div>
-                  <div >
-                    <%= f.text_field :message, class: "form-control", placeholder: "Message"  %>
-                  </div>
+        </tr>
+        </thead>
 
-                  <div >
-                    <%= f.text_field :assign_by, class: "form-control", placeholder: "Assign By"  %>
-                  </div>
-                  <div>
-                    <%= f.submit "Submit", class: "btn btn-default submit" %>
-                  </div>
+        <tbody>
+        <% @checks.each do |check| %>
+            <tr>
+              <td><%= User.find(check.user_id).username %></td>
+              <td><%= User.find(check.user_id).user_role %></td>
 
-                  <div class="clearfix"></div>
-
-
-                    <div class="clearfix"></div>
-                    <br />
-
-                  </div>
-              <% end %>
-              </div>
-            </section>
-          </div>
-
-        </div>
+              <td><%= check.created_at %></td>
+              <td><%= check.status %></td>
+              </tr>
+        <% end %>
+        </tbody>
+      </table>
       </div>
-      </body>
-
-    </div>
+    <!-- /page content -->
 
     <!-- footer content -->
     <footer>
@@ -205,5 +175,5 @@
     <!-- /footer content -->
   </div>
 </div>
-
+</div>
 </body>

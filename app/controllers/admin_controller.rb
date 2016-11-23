@@ -29,6 +29,10 @@ end
     @users = User.all
   end
 
+  def timelog
+    @checks = Checkin.all
+  end
+
 
 
 

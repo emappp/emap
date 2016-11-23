@@ -22,4 +22,20 @@ class GuardController < ApplicationController
 
   end
 
+  def checkin
+    if session[:check] == true
+      session[:check] = false
+      @checkInLog = Checkin.new(user_id: session[:user_id], status: "Check-Out")
+    else
+      session[:check] = true
+      @checkInLog = Checkin.new(user_id: session[:user_id], status: "Check-In")
+    end
+
+    if @checkInLog.save
+      redirect_to guard_index_url
+    end
+
+
+  end
+
 end
