@@ -1,0 +1,313 @@
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a href="index.html" class="site_title"><i class="fa fa-user-secret"></i> <span>Emap</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>Guard User</h3>
+            <ul class="nav side-menu">
+              <li> <%= link_to 'Home', guard_index_path %>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Hello! <%= @user.username %>
+                <span class=" fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-usermenu pull-right">
+                <li><%= link_to 'Log Out', logout_path %></li>
+              </ul>
+            </li>
+
+            <li role="presentation" class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-green">6</span>
+              </a>
+              <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="text-center">
+                    <a>
+                      <strong>See All Alerts</strong>
+                      <i class="fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" style="min-height: 600px" role="main">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Current Weather Updates<small><%= @response['location']['city'] %> | <%= @response['location']['state'] %> | <%= @response['location']['country_name'] %></small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="temperature"><b><%= @response['current_observation']['observation_time'] %></b>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="weather-icon">
+                  <img src=<%= @response['current_observation']['icon_url']%> id="partly-cloudy-day"></img>
+                  <h1><%= @response['current_observation']['weather']%></h1>
+                </div>
+              </div>
+              <div class="col-sm-8">
+
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="weather-text pull-right">
+                <h3 class="degrees"><%= @response['current_observation']['temperature_string']%></h3>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row weather-days">
+              <div class="col-sm-3">
+                <div class="daily-weather panel panel-body panel-info">
+                  <h2 class="day"><%= @response['forecast']['simpleforecast']['forecastday'][0]['date']['weekday_short']%></h2>
+                  <h3 class="degrees"><%= @response['forecast']['simpleforecast']['forecastday'][0]['high']['celsius']%></h3>
+                  <img style="align-content: center" src=<%= @response['forecast']['simpleforecast']['forecastday'][0]['icon_url']%> />
+                  <h2 class="alignright"><%= @response['forecast']['simpleforecast']['forecastday'][0]['maxwind']['kph']%>km/h</h2>
+                  <h5 class="text-center text-uppercase"><%= @response['forecast']['simpleforecast']['forecastday'][0]['conditions'] %></h5>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="daily-weather panel panel-body panel-info">
+                  <h2 class="day"><%= @response['forecast']['simpleforecast']['forecastday'][1]['date']['weekday_short']%></h2>
+                  <h3 class="degrees"><%= @response['forecast']['simpleforecast']['forecastday'][1]['high']['celsius']%></h3>
+                  <img style="align-content: center" src=<%= @response['forecast']['simpleforecast']['forecastday'][1]['icon_url']%> />
+                  <h2 class="alignright"><%= @response['forecast']['simpleforecast']['forecastday'][1]['maxwind']['kph']%>km/h</h2>
+                  <h5 class="text-center text-uppercase"><%= @response['forecast']['simpleforecast']['forecastday'][1]['conditions'] %></h5>
+
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="daily-weather panel panel-body panel-info">
+                  <h2 class="day"><%= @response['forecast']['simpleforecast']['forecastday'][2]['date']['weekday_short']%></h2>
+                  <h3 class="degrees"><%= @response['forecast']['simpleforecast']['forecastday'][2]['high']['celsius']%></h3>
+                  <img style="align-content: center" src=<%= @response['forecast']['simpleforecast']['forecastday'][2]['icon_url']%> />
+                  <h2 class="alignright"><%= @response['forecast']['simpleforecast']['forecastday'][2]['maxwind']['kph']%>km/h</h2>
+                  <h5 class="text-center text-uppercase"><%= @response['forecast']['simpleforecast']['forecastday'][2]['conditions'] %></h5>
+
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="daily-weather panel panel-body panel-info">
+                  <h2 class="day"><%= @response['forecast']['simpleforecast']['forecastday'][3]['date']['weekday_short']%></h2>
+                  <h3 class="degrees"><%= @response['forecast']['simpleforecast']['forecastday'][3]['high']['celsius']%></h3>
+                  <img style="align-content: center" src=<%= @response['forecast']['simpleforecast']['forecastday'][3]['icon_url']%> />
+                  <h2 class="alignright"><%= @response['forecast']['simpleforecast']['forecastday'][3]['maxwind']['kph']%>km/h</h2>
+                  <h5 class="text-center text-uppercase"><%= @response['forecast']['simpleforecast']['forecastday'][3]['conditions'] %></h5>
+
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>BBC News | Live</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="dashboard-widget-content">
+
+              <ul class="list-unstyled timeline widget">
+                <% for i in 0..5 %>
+                <li>
+                  <div class="block">
+                    <div class="block_content">
+                      <h2 class="title">
+                        <span><%= @bbc['articles'][i]['title']%></span>
+                      </h2>
+                      <div class="byline">
+                        <span><%= @bbc['articles'][i]['publishedAt']%></span> by <span><%= @bbc['articles'][i]['author']%></span>
+                      </div>
+                      <p class="excerpt"><%= @bbc['articles'][i]['description']%><div class="text-right"><a href=<%= @bbc['articles'][i]['url']%> target="_blank">Read&nbsp;More</a></div>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                    <% end %>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>CNN News | Live</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="dashboard-widget-content">
+
+              <ul class="list-unstyled timeline widget">
+                <% for i in 0..5 %>
+                    <li>
+                      <div class="block">
+                        <div class="block_content">
+                          <h2 class="title">
+                            <span><%= @cnn['articles'][i]['title']%></span>
+                          </h2>
+                          <div class="byline">
+                            <span><%= @cnn['articles'][i]['publishedAt']%></span> by <span><%= @cnn['articles'][i]['author']%></span>
+                          </div>
+                          <p class="excerpt"><%= @cnn['articles'][i]['description']%><div class="text-right"><a href=<%= @cnn['articles'][i]['url']%> target="_blank">Read&nbsp;More</a></div>
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                <% end %>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
+</div>
+</div>
+</body>

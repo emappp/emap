@@ -11,9 +11,17 @@ class SessionsController < ApplicationController
 
       if user.user_role == "admin"
       redirect_to admin_index_url
-      else
-        redirect_to admin_index1_url
       end
+
+      if user.user_role == "Supervisor"
+        redirect_to supervisor_index_url
+      end
+
+      if user.user_role == "Guard"
+        redirect_to guard_index_url
+      end
+
+
 
     else
       redirect_to login_url, alert: "Invalid Username or Password"

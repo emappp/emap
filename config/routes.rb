@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :jobs
   get 'admin/index'
+  get 'guard/index'
+  get 'supervisor/index'
   get 'sessions/create'
   get 'sessions/destroy'
 

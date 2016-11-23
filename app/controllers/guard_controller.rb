@@ -1,10 +1,10 @@
-class AdminController < ApplicationController
+class GuardController < ApplicationController
   before_action :access
 
   def access
-    if session[:user_role] != "admin"
-      redirect_to login_url, notice: "You did not have admin access"
-end
+    if session[:user_role] != "Guard"
+      redirect_to login_url, notice: "You did not have Guard access"
+    end
   end
 
   def index
@@ -21,15 +21,5 @@ end
 
 
   end
-
-
-  def activation
-    @id = session[:user_id]
-    @user = User.find_by(id: @id)
-    @users = User.all
-  end
-
-
-
 
 end
