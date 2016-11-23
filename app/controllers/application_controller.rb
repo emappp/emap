@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
       redirect_to login_url, notice: "You are trying to unauthorizzed access"
     end
   end
+
 end
