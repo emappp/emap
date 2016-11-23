@@ -34,6 +34,12 @@ gem 'httparty'
 
 gem 'google-api-client'
 
+gem 'geocoder'
+
+gem 'twitter'
+
+gem 'twitter-text'
+
 gem 'open-weather'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
