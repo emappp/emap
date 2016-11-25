@@ -18,7 +18,7 @@ class GuardController < ApplicationController
     @bbc = HTTParty.get("https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=d99f14bd9c2b40a6bc88d2867d098ff8")
     @cnn = HTTParty.get("https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=d99f14bd9c2b40a6bc88d2867d098ff8")
 
-
+    @works = Job.order(id: :desc).find_by(username: User.find(session[:user_id]).username)
 
   end
 
@@ -35,6 +35,10 @@ class GuardController < ApplicationController
       redirect_to guard_index_url
     end
 
+
+  end
+
+  def myworks
 
   end
 
