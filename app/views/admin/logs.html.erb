@@ -24,10 +24,11 @@
               <li> <%= link_to 'Users', admin_activation_path %>
               </li>
               <li> <%= link_to 'Jobs', jobs_path %>
-              </li><li> <%= link_to 'Check In - Out', admin_timelog_path %>
-            </li>
-              <li> <%= link_to 'Logs', admin_logs_path %>
               </li>
+              <li> <%= link_to 'Check In - Out', admin_timelog_path %>
+            </li><li> <%= link_to 'Logs', admin_logs_path %>
+            </li>
+
             </ul>
           </div>
         </div>
@@ -61,7 +62,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Hello! <%= @user.username %>
+                Hello! <%= User.find(session[:user_id]).username %>
                 <span class=" fa fa-angle-down"></span>
               </a>
               <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -140,32 +141,30 @@
     <!-- /top navigation -->
 
     <!-- page content -->
-    <div class="right_col" style="height: 600px" role="main">
-
-      <%= link_to 'Assign A Job', new_job_path, class: 'btn btn-primary'%>
-
-      <table class="table table-bordered">
+    <div class="right_col" style="min-height: 600px" role="main">
+      <table class="table table-striped">
         <thead>
         <tr>
           <th>Username</th>
-          <th>Email</th>
-          <th>User Role</th>
+          <th>Role</th>
+          <th>Time</th>
+          <th>Status</th>
 
         </tr>
         </thead>
 
         <tbody>
-        <% @users.each do |user| %>
+        <% @logs.each do |logi| %>
             <tr>
-              <td><%= user.username %></td>
-              <td><%= user.email %></td>
-              <td><%= user.user_role %></td>
+              <td><%= logi.username %></td>
+              <td><%= logi.time %></td>
+              <td><%= logi.status %></td>
             </tr>
         <% end %>
         </tbody>
       </table>
-
     </div>
+    <!-- /page content -->
 
     <!-- footer content -->
     <footer>
@@ -177,5 +176,5 @@
     <!-- /footer content -->
   </div>
 </div>
-
+</div>
 </body>

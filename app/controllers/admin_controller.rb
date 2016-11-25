@@ -33,6 +33,10 @@ end
     @checks = Checkin.all
   end
 
+  def logs
+    @logs = Log.all
+  end
+
 
 
 

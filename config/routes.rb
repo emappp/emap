@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   get 'admin/timelog'
+  get 'admin/logs'
 
   get 'guard/checkin', to: 'guard#checkin'
   get 'supervisor/checkin', to: 'supervisor#checkin'

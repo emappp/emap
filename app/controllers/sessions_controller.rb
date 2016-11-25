@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:user_role] = user.user_role
 
+      @log = Log.new(username:user.username, time:Time.now, status: "Login")
+      @log.save
+
       if user.user_role == "admin"
       redirect_to admin_index_url
       end
@@ -29,6 +32,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    user = User.find_by(id: session[:user_id])
+    @logout = Log.new(username:user.username, time:Time.now, status: "Logout")
+    @logout.save
+
     session[:user_id] = nil
     redirect_to login_url, alert: "Successfully Loged out"
   end
